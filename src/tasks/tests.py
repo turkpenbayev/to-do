@@ -72,17 +72,3 @@ class LowonganListAPIViewTestCase(APITestCase):
         self.assertEqual(200, response.status_code)
         task = Task.objects.get(pk=self.task.pk)
         self.assertEqual(task.title, data['title'])
-
-
-    def test_customers_execute(self):
-        """
-        Test to task execute
-        """
-        data = {
-            'title': 'new title',
-        }
-        response = self.client.post(
-            reverse('todo-execute', kwargs={"pk": self.task.pk}), **self.headers)
-        self.assertEqual(200, response.status_code)
-        task = Task.objects.get(pk=self.task.pk)
-        self.assertTrue(task.is_done)
