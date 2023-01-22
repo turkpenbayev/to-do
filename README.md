@@ -23,6 +23,17 @@ docker-compose up -d --build
     phone="77777777777"
     password="123456"
     token="b99b304a851cbe1ee69232e43cd5eeb55fe669ac"
+    
+    
+**src/app/settings.py** поставте своии данны
+
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'EMAIL_HOST'
+    EMAIL_PORT = 'EMAIL_PORT'
+    EMAIL_HOST_USER = 'EMAIL_HOST_USER'
+    EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+    EMAIL_USE_SSL = 'EMAIL_USE_SSL'
+
 
 **APIs**
 
