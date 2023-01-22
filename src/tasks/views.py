@@ -1,7 +1,5 @@
 from logging import getLogger
 
-from django.db import connections
-from django.db.utils import OperationalError
 from rest_framework import viewsets, status, mixins
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
@@ -14,27 +12,6 @@ from tasks import serializers
 
 
 logger = getLogger('django')
-
-
-class HealthViewSet(viewsets.GenericViewSet):
-    authentication_classes = []
-    permission_classes = []
-    pagination_class = None
-
-    @action(methods=['GET'], detail=False, url_path='alive')
-    def alive(self, request, *args, **kwargs):
-        return Response(status=status.HTTP_200_OK)
-
-    @action(methods=['GET'], detail=False, url_path='ready')
-    def ready(self, request, *args, **kwargs):
-        db_conn = connections['default']
-        try:
-            c = db_conn.cursor()
-        except OperationalError:
-            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        else:
-            c.close()
-            return Response(status=status.HTTP_200_OK)
 
 
 class ToDoViewSet(ActionSerializerViewSetMixin,
