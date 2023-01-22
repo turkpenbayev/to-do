@@ -1,4 +1,4 @@
-# Сервис уведомлений
+# Сервис "Список задач"
 
 [![Build Status](https://github.com/turkpenbayev/to-do/actions/workflows/django.yml/badge.svg?branch=master)](https://github.com/turkpenbayev/to-do/actions/workflows/django.yml)
 
